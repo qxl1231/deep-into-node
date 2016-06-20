@@ -30,7 +30,7 @@ V8更加直接的将抽象语法树通过JIT技术转换成本地代码，放弃
 
 Handle分为Local和Persistent两种。
 
-从字面上就能知道，Local是局部的，它同时被HandleScope进行管理。persistent，类似与全局的，不受HandleScope的管理，其作用域可以延伸到不同的函数，而Local是局部的，作用域比较小。Persistent Handle对象需要Persistent::New, Persistent::Dispose配对使用，类似于C++中new和delete.Persistent::MakeWeak可以用来弱化一个Persistent Handle，如果一个对象的唯一引用Handle是一个Persistent，则可以使用MakeWeak方法来如果该引用，该方法可以出发GC对被引用对象的回收。
+从字面上就能知道，Local是局部的，它同时被HandleScope进行管理。persistent，类似于全局的，不受HandleScope的管理，其作用域可以延伸到不同的函数，而Local是局部的，作用域比较小。Persistent Handle对象需要Persistent::New, Persistent::Dispose配对使用，类似于C++中new和delete.Persistent::MakeWeak可以用来弱化一个Persistent Handle，如果一个对象的唯一引用Handle是一个Persistent，则可以使用MakeWeak方法来弱化该引用，该方法可以出发GC对被引用对象的回收。
 
 ### Scope 
 从概念上理解，作用域可以看成是一个句柄的容器，在一个作用域里面可以有很多很多个句柄（也就是说，一个scope里面可以包含很多很多个
